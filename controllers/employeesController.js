@@ -35,16 +35,16 @@ const createEmployee = (req,res) => {
 };
 
 const updateEmployee = (req,res) => {
-    console.log('kaka')
+    
     const employee = data.employees.find(emp => emp.id === parseInt(req.params.id));
     if(!employee){
         res.status(400).json({'message':`Could not find employee with id ${req.params.id}`})
     }
-    if (req.body.lastname) employee.lastname = req.params.lastname;
-    if (req.body.firstname) employee.firstname = req.params.firstname;
+    if (req.body.lastname) employee.lastname = req.body.lastname;
+    if (req.body.firstname) employee.firstname = req.body.firstname;
 
     //get array without the employee 
-    const filteredArray = data.employees.filter(emp => emp.id !==(req.params.id))
+    const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.params.id))
     const unsortedArray = [...filteredArray, employee] //Add updated employee
     data.setEmployees(unsortedArray.sort((a,b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
     res.json(data.employees);
@@ -60,7 +60,6 @@ const deleteEmployee = (req,res) => {
     const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.params.id))
     data.setEmployees([...filteredArray]);
     res.json(data.employees);
-
 }   
 
 module.exports = {
