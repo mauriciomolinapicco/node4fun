@@ -2,3 +2,6 @@
 20240429	13:32:09	bdf01d94-edb4-4f04-92da-ebd381296c0a	Error: Not allowed by CORS
 20240429	13:32:09	0e600536-9d24-4086-b85e-3e77916e1395	Error: Not allowed by CORS
 20240429	13:59:40	8b7e71ad-a75b-4ef3-bf97-eb5fae047847	ReferenceError: alert is not defined
+20240429	16:02:51	3cbae641-f249-47d7-a081-6b53754e1c19	TypeError: Cannot read properties of undefined (reading 'find')
+20240429	16:05:22	c048257a-7089-4921-b2e8-7600371811e2	TypeError: Cannot read properties of undefined (reading 'find')
+20240429	16:18:50	13a5875d-c34e-4694-be64-dc476385083b	TypeError: Cannot read properties of undefined (reading '1')

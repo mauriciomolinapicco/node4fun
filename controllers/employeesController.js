@@ -8,12 +8,20 @@ data.employess = require('../model/employees.json')
 */
 
 const getAllEmployees = (req,res) => {
-    res.json(data.employess);
+    res.json(data.employees);
 };
 
 const getEmployee = (req,res) => {
+    const employee = data.employees.find(emp => emp.id === parseInt(req.params.id))
+    if (!employee){
+        return res.status(400).json({'message':`Employee with id ${req.params.id} not found`})
+    }
+    res.json(employee);
+}
+
+const createEmployee = (req,res) => {
     const newEmployee = {
-        id: data.employess[data.employees.length -1].id + 1 || 1,
+        id: data.employees[data.employees.length -1].id + 1 || 1,
         firstname: req.body.firstname,
         lastname: req.body.lastname
     };
@@ -24,29 +32,36 @@ const getEmployee = (req,res) => {
 
     data.setEmployees([...data.employees, newEmployee]);
     res.status(201).json(data.employees)
-
-    res.json({"id": req.params.id});
-}
-
-const createEmployee = (req,res) => {
-    res.json({
-        "firstname": req.body.firstname,
-        "lastname": req.body.lastname
-    })
 };
 
 const updateEmployee = (req,res) => {
-    res.json({
-        "firstname": req.body.firstname,
-        "lastname": req.body.lastname
-    })
+    console.log('kaka')
+    const employee = data.employees.find(emp => emp.id === parseInt(req.params.id));
+    if(!employee){
+        res.status(400).json({'message':`Could not find employee with id ${req.params.id}`})
+    }
+    if (req.body.lastname) employee.lastname = req.params.lastname;
+    if (req.body.firstname) employee.firstname = req.params.firstname;
+
+    //get array without the employee 
+    const filteredArray = data.employees.filter(emp => emp.id !==(req.params.id))
+    const unsortedArray = [...filteredArray, employee] //Add updated employee
+    data.setEmployees(unsortedArray.sort((a,b) => a.id > b.id ? 1 : a.id < b.id ? -1 : 0));
+    res.json(data.employees);
 }
 
+
 const deleteEmployee = (req,res) => {
-    res.json({
-        "id": req.body.id
-    })
-}
+    const employee = data.employees.find(emp => emp.id === parseInt(req.params.id));
+    if (!employee){
+        return res.status(400).json({'message':`Employee with ID ${req.params.id} not found`})
+    }
+
+    const filteredArray = data.employees.filter(emp => emp.id !== parseInt(req.params.id))
+    data.setEmployees([...filteredArray]);
+    res.json(data.employees);
+
+}   
 
 module.exports = {
     getAllEmployees,
