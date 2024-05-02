@@ -6,3 +6,5 @@
 20240429	16:05:22	c048257a-7089-4921-b2e8-7600371811e2	TypeError: Cannot read properties of undefined (reading 'find')
 20240429	16:18:50	13a5875d-c34e-4694-be64-dc476385083b	TypeError: Cannot read properties of undefined (reading '1')
 20240430	15:38:23	0eef2c98-bf02-48c7-be35-106c33ee7340	Error: Cannot set headers after they are sent to the client
+20240501	17:30:36	7916a77c-9a4f-4b42-8d1c-9d37765ea47e	ReferenceError: person is not defined
+20240501	17:31:04	2b050a6b-2623-4247-bc85-00a10cb48634	TypeError: usersDB.users.find is not a function

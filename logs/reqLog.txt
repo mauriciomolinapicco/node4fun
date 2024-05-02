@@ -115,3 +115,5 @@
 20240501	15:43:01	8f630c90-77cb-4bde-a411-b75c21edef49	POST	undefined	/register/
 20240501	15:56:49	0977be8d-58b3-42f4-93be-99a2d6327129	POST	undefined	/register/
 20240501	15:57:22	83c7ec6a-6eb7-4f62-9dad-fdaf938a885c	POST	undefined	/register/
+20240501	17:30:36	650a7a0c-6d6b-45fc-a4da-87f19e55f5f1	POST	undefined	/login/
+20240501	17:31:04	179e6683-3d2d-4eca-87eb-a804f4fa621e	POST	undefined	/login/

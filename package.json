@@ -8,7 +8,9 @@
     "cors": "^2.8.5",
     "date-fns": "^3.6.0",
     "debug": "^4.3.4",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "mongoose": "^8.3.3",
     "uuid": "^9.0.1"
   },
   "scripts": {

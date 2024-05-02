@@ -5,6 +5,13 @@ const cors = require('cors');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
 const corsOptions = require('./config/corsOptions');
+const mongoose = require('mongoose');
+const connectDB = require('./config/dbConn')
+require('dotenv').config();
+
+
+// Connect to mongodb
+connectDB();
 
 const PORT = process.env.PORT || 3500;
 
@@ -30,6 +37,7 @@ app.use('/', require('./routes/root'))
 app.use('/register', require('./routes/register'))
 app.use('/subdir', require('./routes/subdir'))
 app.use('/employees', require('./routes/api/employees'))
+app.use('/login', require('./routes/login'))
 
 //app.all() means: everything that made it to here (i send the 404)
 app.all('/*', (req,res) => {
@@ -45,5 +53,7 @@ app.all('/*', (req,res) => {
 
 app.use(errorHandler);
 
-
-app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`))
+mongoose.connection.once('open', () => {
+    console.log('Connected to MongoDB')
+    app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`))
+})
